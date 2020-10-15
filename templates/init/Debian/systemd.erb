@@ -8,7 +8,7 @@ Documentation=http://supervisord.org
 After=network.target
 
 [Service]
-Type=forking
+Type=<% if @nodaemon %>simple<% else %>forking<% end %>
 ExecStart=<%= @executable %> -c <%= @config_file %>
 ExecReload=<%= @executable_ctl %> reload
 ExecStop=<%= @executable_ctl %> shutdown
